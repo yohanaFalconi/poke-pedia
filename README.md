@@ -242,8 +242,3 @@ Ran all test suites.
 - [x] UI: Permite filtrar data en base a una condición.
 - [x] UI: Es _responsive_.
 
-## 6. Autoras
-
--Paola Vitalia Taboada Alanoca.
-
--Dafne Corali Aquino Manyari.
