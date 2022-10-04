@@ -1,0 +1,422 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+/* Contenedor global */
+.main-container {
+  background-color: #f7f7f7;
+  margin: 10px;
+  border-radius: 30px;
+}
+/* Header/Encabezado principal */
+.logo-fondo {
+  width: 100%;
+  display: flex;
+}
+/* Diseño barra Menu*/
+.barraMenu {
+  width: 100%;
+  background-color: #4a7eaa;
+}
+#btn-menu {
+  display: none;
+}
+.barraMenu label {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+.barraMenu label:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+}
+.menu ul {
+  margin: 0%;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.menu li {
+  text-align: center;
+  flex-grow: 1;
+}
+.menu li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.menu li a {
+  display: block;
+  padding: 15px 20px;
+  color: #ffff;
+  text-decoration: none;
+}
+/* Menu despegable que se activa en responsive  */
+@media (max-width: 768px) {
+  .barraMenu label {
+    display: block;
+  }
+  .menu {
+    position: absolute;
+    background-color: #4a7eaa;
+    width: 70%;
+    margin-left: -80%;
+  }
+  .menu ul {
+    flex-direction: column;
+  }
+  .menu li {
+    border-top: 1px solid #ffff;
+  }
+  #btn-menu:checked ~ .menu {
+    margin: 0%;
+    z-index:100;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bolder;
+  color: black;
+}
+.menu-options:hover {
+  opacity: 0.6;
+  background: rgb(48, 51, 51);
+  border: 1px solid white;
+}
+a:hover {
+  background: rgb(48, 51, 51);
+  color: white;
+}
+
+/* Subcontenedor para las opciones despegables y bienvenida */
+.search-area-container {
+  padding: 20px 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+}
+.welcome-phrase {
+  text-align: center;
+  padding: 10px;
+}
+/* Boton Buscar */
+.search {
+  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png)
+    no-repeat 210px 3px;
+  outline: none;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+}
+.buttonSearch {
+  font-family: "Poppins";
+  font-size: 15px;
+  color: #f4faf8;
+  width: 160px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: bolder;
+  background-color: #e79416;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+  cursor: pointer;
+}
+/* Responsive para el btn buscar */
+@media (max-width: 489px) {
+  .spaceSearch {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* Subcontenedor: Listas desplegables */
+.dropdown-lists-and-reset-button {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+select {
+  width: 250px;
+  border-radius: 7px;
+  margin: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+}
+/* Boton de reseteo de búsqueda */
+.reset-search {
+  width: 160px;
+  padding: 10px;
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 7px;
+  border: 1px solid rgb(121, 121, 121);
+}
+.reset-search:hover {
+  background: #e79416;
+  border: 1px solid rgb(48, 51, 51);
+  color: white;
+}
+/* Sección de todas las cards interactivas */
+.cards-pokemon {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+/* Divs creados por JS */
+.single-card {
+  width: 210px;
+  height: 250px;
+  margin: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 2px solid #74cb48;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.num-card {
+  font-size: 18px;
+  font-weight: bolder;
+  background: white;
+  color: rgb(11, 11, 107);
+  border-radius: 10px;
+  padding: 10px 0 0 15px;
+}
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: black;
+  color: #f7f7f7;
+  border-radius: 5px;
+  font-size: 11px;
+  text-align: center;
+  padding: 5px 8px;
+  z-index: 2;
+  align-self: center;
+  top: 5%;
+  right: 10%;
+  left: 40%;
+  opacity: 0;
+}
+.single-card:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+.tooltip::after {
+  content: "";
+  display: block;
+  background: black;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  position: absolute;
+  left: 20%;
+}
+.img-card {
+  width: 70%;
+  margin: auto;
+}
+.img-card:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.name-card {
+  width: 100%;
+  height: 50px;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  text-align: center;
+  line-height: 50px;
+  background: #74cb48;
+  border-radius: 0 0 5px 5px;
+}
+/* Section: "How to be a pokemon master" */
+.new-container {
+  padding: 25px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.section-video {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.video-youtube {
+  width: 560px;
+  height: 315px;
+  margin: 15px 0;
+}
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  width: 30%;
+  padding: 15px 5px;
+  background: #c3c7f5;
+  border-radius: 5px;
+}
+h5 {
+  align-self: center;
+  margin: 15px;
+}
+.ul-social-net {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.list-sn {
+  list-style: none;
+  margin: 5px 35px;
+  display: flex;
+}
+.logo-social-network {
+  width: 25px;
+  margin-right: 10px;
+}
+.social-network-link {
+  padding-top: 3px;
+}
+.social-network-link:hover {
+  color: white;
+  background: none;
+  transform: scale(1.08);
+}
+.pikachu-gif {
+  padding: 20px;
+}
+/* Responsive del section how to be a pokemon master */
+@media (max-width:768px){
+  .video-youtube{
+    width: 80%;
+  }
+  .new-container{
+    flex-flow: column;
+  }
+  .section-video{
+    width:100%;
+  }
+  .sidebar{
+    width:60%;
+    align-self: center;
+    margin: 25px;
+
+  }
+}
+/* Creando modal- Información Pokémon*/
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  padding-top: 10%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#container-info-pokemon {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20px 25px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 20px 25px;
+  width: 35%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Responsive del modal */
+@media (max-width: 768px) {
+  #modal {
+    position: fixed;
+    padding-top: 30%;
+  }
+  #container-info-pokemon {
+    width: 80%;
+  }
+}
+#header-info-pokemon {
+  display: flex;
+  align-content: row nowrap;
+}
+#name-info-pokemon {
+  font-size: 18px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  width: 100%;
+  color: rgb(18, 18, 82);
+}
+#close {
+  font-family: sans-serif;
+  color: #aaaaaa;
+  align-self: flex-end;
+}
+#close:hover {
+  color: #000;
+  cursor: pointer;
+}
+#small-info-pokemon {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+#imagen-info-pokemon {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.imagen-info-pokemon {
+  width: 70%;
+  align-self: center;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+}
+#first-info-pokemon {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+  width: 45%;
+}
+#height-info-pokemon,
+#weight-info-pokemon,
+#egg-info-pokemon,
+#encounter-info-pokemon {
+  font-size: 15px;
+  padding: 4px 0;
+}
+#about-info-pokemon {
+  font-size: 15px;
+  margin: auto;
+  text-align: justify;
+}
